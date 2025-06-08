@@ -1,9 +1,40 @@
-# Enforce LF line endings for key file types
+# ======================
+# 📜 Enforce LF Endings
+# ======================
+
+# Shell scripts
 *.sh         text eol=lf
+
+# Kubernetes / CI files
 *.yaml       text eol=lf
 *.yml        text eol=lf
 *.json       text eol=lf
+
+# Dockerfiles
 *.Dockerfile text eol=lf
 Dockerfile   text eol=lf
+
+# Markdown and docs
 *.md         text eol=lf
+*.txt        text eol=lf
+
+# Code files
+*.py         text eol=lf
+*.js         text eol=lf
+*.ts         text eol=lf
+*.html       text eol=lf
+*.css        text eol=lf
+*.scss       text eol=lf
+*.go         text eol=lf
+*.java       text eol=lf
+*.c          text eol=lf
+*.cpp        text eol=lf
+*.rb         text eol=lf
+
+# Git config files
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
+# Catch-all for unknown text
+* text=auto
 
