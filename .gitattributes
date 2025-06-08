@@ -1,0 +1,9 @@
+# Enforce LF line endings for key file types
+*.sh         text eol=lf
+*.yaml       text eol=lf
+*.yml        text eol=lf
+*.json       text eol=lf
+*.Dockerfile text eol=lf
+Dockerfile   text eol=lf
+*.md         text eol=lf
+
