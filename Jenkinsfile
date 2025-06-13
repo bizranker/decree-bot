@@ -1,24 +1,29 @@
 pipeline {
-    agent { label 'master' }
+    agent {
+        label 'master'
+    }
 
     environment {
-        SLACK_WEBHOOK = credentials('slack-decreebot-webhook')
+        // Priority: Jenkins credentials if set, otherwise .env will provide it
+        WEBHOOK_URL = credentials('decree_webhook')
     }
 
     stages {
-        stage('Announce Decrees') {
+        stage('Send Decree') {
             steps {
-                sh 'bash scripts/post_decree.sh'
+                script {
+                    // Load .env manually for local/dev compatibility
+                    sh '''
+                    if [ -f .env ]; then
+                        set -a
+                        source .env
+                        set +a
+                    fi
+                    chmod +x ./scripts/post_decree.sh
+                    ./scripts/post_decree.sh
+                    '''
+                }
             }
-        }
-    }
-
-    post {
-        success {
-            echo '✅ Decrees delivered to the Empire.'
-        }
-        failure {
-            echo '⚠️ Decree delivery failed.'
         }
     }
 }
