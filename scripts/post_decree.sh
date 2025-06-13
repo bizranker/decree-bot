@@ -1,2 +1,10 @@
 #!/bin/sh
-curl -X POST -H 'Content-type: application/json' --data @/app/decrees/$1 https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+
+EDICTA_DIR="./edicta"
+
+for file in "$EDICTA_DIR"/*.json; do
+    echo "📜 Posting edict: $file"
+    curl -X POST -H 'Content-type: application/json' \
+         --data @"$file" \
+         "$SLACK_WEBHOOK"
+done
