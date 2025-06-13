@@ -1,0 +1,8 @@
+{
+  "id": "decree_001",
+  "title": "Public Edict on the Sanctity of Version Control",
+  "content": "Let it be known across the Empire that no code shall be merged into main without a pull request, two reviews, and a successful pipeline run.",
+  "author": "Imperator Visio Maximus",
+  "date_issued": "2025-06-13",
+  "channel": "#decrees"
+}
