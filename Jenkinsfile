@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     // Slack webhook credential is injected into this variable
-    DECREEBOT_WEBHOOK_URL = credentials('decreta-webhook')
+    DECREEBOT_WEBHOOK_URL = credentials('decreta_webhook')
   }
 
   stages {
