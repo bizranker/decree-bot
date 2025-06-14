@@ -16,9 +16,17 @@ WEBHOOK_URL="${DECREEBOT_WEBHOOK_URL:-$SLACK_WEBHOOK}"
 # Debug output
 echo "🔧 Using webhook URL: $WEBHOOK_URL"
 
-for file in "$EDICTA_DIR"/*.json; do
-    echo "📜 Posting edict: $file"
-    curl -X POST -H 'Content-type: application/json' \
-         --data @"$file" \
-         "$WEBHOOK_URL"
-done
+# Find latest .json decree based on modification time
+latest_file=$(ls -t "$EDICTA_DIR"/*.json | head -n1)
+
+if [ -z "$latest_file" ]; then
+  echo "⚠️ No decree file found in $EDICTA_DIR"
+  exit 1
+fi
+
+echo "📜 Posting latest edict: $latest_file"
+
+curl -X POST -H 'Content-type: application/json' \
+     --data @"$latest_file" \
+     "$WEBHOOK_URL"
+
