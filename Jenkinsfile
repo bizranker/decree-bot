@@ -15,7 +15,7 @@ pipeline {
 
     stage('Send Decree') {
       steps {
-        withCredentials([string(credentialsId: 'decreta-webhook', variable: 'DECREEBOT_WEBHOOK_URL')]) {
+        withCredentials([string(credentialsId: 'decreta_webhook', variable: 'DECREEBOT_WEBHOOK_URL')]) {
           sh '''
             chmod +x ./scripts/post_latest_decree.sh
             ./scripts/post_latest_decree.sh
